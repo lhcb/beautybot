@@ -32,7 +32,7 @@ module.exports = (robot) ->
                     return
                 output = JSON.parse body
                 evts = output["results"]
-                output = 'This is the LHCb agenda for today:'
+                output = 'This is the LHCb agenda for today:\n'
 
                 evts = evts.sort (a_, b_) ->
                     a = a_["startDate"]["time"]
