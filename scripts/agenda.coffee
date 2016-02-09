@@ -32,7 +32,7 @@ module.exports = (robot) ->
                     return
                 output = JSON.parse body
                 evts = output["results"]
-                output = ''
+                output = 'This is the LHCb agenda for today:'
 
                 evts = evts.sort (a_, b_) ->
                     a = a_["startDate"]["time"]
@@ -52,7 +52,7 @@ module.exports = (robot) ->
                         room_string = "in #{evt["room"]}"
                     else
                         room_string = ""
-                    output += "(#{beginning} - #{end}) #{title} #{room_string}\n"
+                    output += "[#{beginning} - #{end}] *#{title}* #{room_string}\n"
 
-                res.send output
+                res.respond output
 
