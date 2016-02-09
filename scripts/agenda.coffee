@@ -36,6 +36,10 @@ showAgenda = (robot, res, from, to) ->
                 res.send "There's a problem: #{err_message}"
                 return
 
+            if evts.length > 50
+                res.reply "There are _way_ too many entries.\nI'm not spamming the channel!"
+                return
+
             if to == from
                 if evts.length == 0
                     res.send "There is nothing happening #{from}!"
