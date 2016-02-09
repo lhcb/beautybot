@@ -54,5 +54,5 @@ module.exports = (robot) ->
                         room_string = ""
                     output += "[#{beginning} - #{end}] *#{title}* #{room_string}\n"
 
-                res.respond output
+                res.reply output
 
