@@ -32,7 +32,8 @@ showAgenda = (robot, res, from, to) ->
             evts = output["results"]
 
             if !evts
-                res.send output["message"]
+                err_message = output["message"]
+                res.send "There's a problem: #{err_message}"
                 return
 
             if to == from
