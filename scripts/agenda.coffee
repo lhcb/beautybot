@@ -46,6 +46,8 @@ module.exports = (robot) ->
 
                 for evt, i in evts
                     title = evt["title"]
+                    # Get rid of *, or they will interfere with markup
+                    title = title.replace(/\*/g, "\\*")
                     beginning = evt["startDate"]["time"][..-4]
                     end = evt["endDate"]["time"][..-4]
                     if evt["room"]
