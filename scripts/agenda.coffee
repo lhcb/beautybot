@@ -31,6 +31,10 @@ showAgenda = (robot, res, from, to) ->
             output = JSON.parse body
             evts = output["results"]
 
+            if !evts
+                res.send output["message"]
+                return
+
             if to == from
                 if evts.length == 0
                     res.send "There is nothing happening #{from}!"
@@ -71,7 +75,7 @@ module.exports = (robot) ->
         showAgenda(robot, res, res.match[1], res.match[1])
         return
 
-    robot.respond /what's on from (.*) to (.*)/i, (res) ->
+    robot.respond /what's on from (.*) to ([^\\?]*)\\??/i, (res) ->
         showAgenda(robot, res, res.match[1], res.match[2])
         return
 
