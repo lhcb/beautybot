@@ -71,11 +71,11 @@ showAgenda = (robot, res, from, to) ->
             res.reply output
 
 module.exports = (robot) ->
-    robot.respond /what's on ((?!from).*)/i, (res) ->
-        showAgenda(robot, res, res.match[1], res.match[1])
+    robot.respond /(what'?s|what is) (on the agenda|happening|planned for|planned|scheduled for|scheduled|on) ((?!from)[^\\?]*)\\??/i, (res) ->
+        showAgenda(robot, res, res.match[3], res.match[3])
         return
 
-    robot.respond /what's on from (.*) to ([^\\?]*)\\??/i, (res) ->
-        showAgenda(robot, res, res.match[1], res.match[2])
+    robot.respond /(what'?s|what is) (on the agenda|happening|planned for|planned|scheduled for|scheduled|on) from (.*) to ([^\\?]*)\\??/i, (res) ->
+        showAgenda(robot, res, res.match[3], res.match[4])
         return
 
