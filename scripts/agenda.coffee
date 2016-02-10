@@ -23,8 +23,6 @@ showAgenda = (robot, res, from, to) ->
     signature = crypto.createHmac('sha1', API_SECRET).update(request).digest('hex')
     request += "&signature=#{signature}"
 
-    res.send request
-
     robot.http(BASE_URL + request)
         .get() (err, resp, body) ->
             if err
