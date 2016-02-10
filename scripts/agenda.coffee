@@ -15,13 +15,15 @@ showAgenda = (robot, res, from, to) ->
     request = REQUEST_URL
     request += 'apikey=' + encodeURIComponent(API_KEY) + '&'
     request += 'detail=contributions&'
-    request += "from=#{from}&"
+    request += "from=" + encodeURIComponent(from) + "&"
     request += 'occ=yes&'
     request += 'onlypublic=no&'
     request += "timestamp=#{ts}&"
-    request += "to=#{to}"
+    request += "to=" + encodeURIComponent(to)
     signature = crypto.createHmac('sha1', API_SECRET).update(request).digest('hex')
     request += "&signature=#{signature}"
+
+    res.send request
 
     robot.http(BASE_URL + request)
         .get() (err, resp, body) ->
